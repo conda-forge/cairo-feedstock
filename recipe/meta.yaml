@@ -10,7 +10,7 @@ source:
   md5: 8e4ff32b82c3b39387eb6f5c59ef848e
 
 build:
-  number: 7
+  number: 8
   skip: true             # [win]
   features:
     - vc9                # [win and py27]
@@ -22,7 +22,7 @@ requirements:
     - python                  # [win]
     - pkg-config              # [unix]
     - libtool                 # [unix]
-    - xz 5.0.*                # [unix]
+    - xz 5.2.*                # [unix]
     - freetype 2.6.*           # [unix]
     - fontconfig 2.11.*       # [unix]
     - pixman                  # [unix]
