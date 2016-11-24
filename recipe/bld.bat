@@ -2,7 +2,7 @@ setlocal enableextensions enabledelayedexpansion
 
 @echo off
 
-:: Setting variables in Cygwin style
+:: Setting variables in Cygwin style.
 set LIBRARY_INC_CW=!LIBRARY_INC:\=/!
 set LIBRARY_INC_CW=!LIBRARY_INC_CW::=!
 set LIBRARY_INC_CW=/%LIBRARY_INC_CW%
@@ -11,7 +11,7 @@ set LIBRARY_LIB_CW=!LIBRARY_LIB:\=/!
 set LIBRARY_LIB_CW=!LIBRARY_LIB_CW::=!
 set LIBRARY_LIB_CW=/%LIBRARY_LIB_CW%
 
-:: Compiling
+:: Compiling.
 make -f Makefile.win32 CFG=release ^
   PIXMAN_CFLAGS=-I%LIBRARY_INC_CW%/pixman ^
   PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
@@ -19,7 +19,7 @@ make -f Makefile.win32 CFG=release ^
   LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
   CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %LIBRARY_LIB_CW%/libpng.lib %LIBRARY_LIB_CW%/zlib.lib'
 
-:: Installing
+:: Installing.
 set CAIRO_INC=%LIBRARY_INC%\cairo
 mkdir %CAIRO_INC%
 move cairo-version.h %CAIRO_INC%
