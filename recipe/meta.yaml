@@ -26,6 +26,7 @@ requirements:
     - xz 5.2.*  # [not win]
     - freetype 2.6.*  # [not win]
     - fontconfig 2.12.*  # [not win]
+    - glib 2.51.*  # [not win]
     - pixman 0.34.*
     - libpng >=1.6.23,<1.7
     - zlib 1.2.*
@@ -37,6 +38,7 @@ requirements:
     - freetype 2.6.*  # [not win]
     - fontconfig 2.12.*  # [not win]
     - libpng >=1.6.23,<1.7
+    - glib 2.51.*  # [not win]
     - pixman 0.34.*
     - zlib 1.2.*
     - icu 56.*
@@ -52,6 +54,7 @@ test:
     # Verify libraries.
     {% set cairo_libs = [
             "libcairo",
+            "libcairo-gobject",
             "libcairo-script-interpreter",
     ] %}
     {% for each_cairo_lib in cairo_libs %}
