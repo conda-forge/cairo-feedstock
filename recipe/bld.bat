@@ -1,6 +1,7 @@
 setlocal enableextensions enabledelayedexpansion
 
-@echo off
+:: get some more diagnostics for finicky Windows builds
+@echo on
 
 :: Setting variables in Cygwin style.
 set LIBRARY_INC_CW=!LIBRARY_INC:\=/!

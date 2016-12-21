@@ -13,7 +13,6 @@ fi
 
 ./configure \
     --prefix="${PREFIX}" \
-    --disable-gobject \
     --enable-warnings \
     --enable-ft \
     --enable-ps \
