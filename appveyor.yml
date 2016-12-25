@@ -22,22 +22,6 @@ environment:
       CONDA_PY: 27
       CONDA_INSTALL_LOCN: C:\\Miniconda-x64
 
-    - TARGET_ARCH: x86
-      CONDA_PY: 34
-      CONDA_INSTALL_LOCN: C:\\Miniconda3
-
-    - TARGET_ARCH: x64
-      CONDA_PY: 34
-      CONDA_INSTALL_LOCN: C:\\Miniconda3-x64
-
-    - TARGET_ARCH: x86
-      CONDA_PY: 35
-      CONDA_INSTALL_LOCN: C:\\Miniconda35
-
-    - TARGET_ARCH: x64
-      CONDA_PY: 35
-      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
-
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
@@ -78,10 +62,6 @@ install:
     - cmd: conda install -n root --quiet --yes obvious-ci
     - cmd: conda install -n root --quiet --yes conda-forge-build-setup
     - cmd: run_conda_forge_build_setup
-
-    # conda-build 2.0.12 may have broken build?
-    - cmd: conda install --yes --quiet conda-build=2.0.11
-    - cmd: conda info
 
 # Skip .NET project specific build phase.
 build: off
