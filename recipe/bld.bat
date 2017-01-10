@@ -1,7 +1,7 @@
 setlocal enableextensions enabledelayedexpansion
 
-:: get some more diagnostics for finicky Windows builds
-@echo on
+:: FIXME: clean up the path transformation situation so that we don't need this
+set MSYS2_ARG_CONF_EXCL=
 
 :: Setting variables in Cygwin style.
 set LIBRARY_INC_CW=!LIBRARY_INC:\=/!
