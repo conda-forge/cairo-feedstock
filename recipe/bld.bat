@@ -1,7 +1,7 @@
 setlocal enableextensions enabledelayedexpansion
 
 :: FIXME: clean up the path transformation situation so that we don't need this
-set MSYS2_ARG_CONF_EXCL=
+set MSYS2_ARG_CONV_EXCL=
 
 :: Setting variables in Cygwin style.
 set LIBRARY_INC_CW=!LIBRARY_INC:\=/!
@@ -19,6 +19,7 @@ make -f Makefile.win32 CFG=release ^
   ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
   LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
   CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %LIBRARY_LIB_CW%/libpng.lib %LIBRARY_LIB_CW%/zlib.lib'
+if errorlevel 1 exit 1
 
 :: Installing.
 set CAIRO_INC=%LIBRARY_INC%\cairo
