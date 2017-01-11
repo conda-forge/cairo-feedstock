@@ -1,7 +1,8 @@
 setlocal enableextensions enabledelayedexpansion
 
-:: FIXME: clean up the path transformation situation so that we don't need this
-set MSYS2_ARG_CONV_EXCL=
+:: Trailing semicolon in this variable as set by current (2017/01)
+:: conda-build breaks us. Manual fix:
+set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 
 :: Setting variables in Cygwin style.
 set LIBRARY_INC_CW=!LIBRARY_INC:\=/!
