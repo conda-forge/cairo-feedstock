@@ -10,7 +10,7 @@ source:
   sha256: 613cb38447b76a93ff7235e17acd55a78b52ea84a9df128c3f2257f8eaa7b252
 
 build:
-  number: 2
+  number: 3
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
@@ -24,20 +24,20 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
     - xz 5.2.*  # [not win]
-    - freetype 2.6.*  # [not win]
+    - freetype 2.7|2.7.*  # [not win]
     - fontconfig 2.12.*  # [not win]
     - glib 2.51.*  # [not win]
     - pixman 0.34.*
-    - libpng >=1.6.23,<1.7
+    - libpng >=1.6.28,<1.7
     - zlib 1.2.*
     - icu 56.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
     - vc 14  # [win and py35]
   run:
-    - freetype 2.6.*  # [not win]
+    - freetype 2.7|2.7.*  # [not win]
     - fontconfig 2.12.*  # [not win]
-    - libpng >=1.6.23,<1.7
+    - libpng >=1.6.28,<1.7
     - glib 2.51.*  # [not win]
     - pixman 0.34.*
     - zlib 1.2.*
