@@ -11,10 +11,11 @@ source:
 
 build:
   number: 3
+  skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
-    - vc14  # [win and py35]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
@@ -30,10 +31,10 @@ requirements:
     - pixman 0.34.*
     - libpng >=1.6.28,<1.7
     - zlib 1.2.*
-    - icu 56.*
+    - icu 58.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and py>=35]
   run:
     - freetype 2.7|2.7.*  # [not win]
     - fontconfig 2.12.*  # [not win]
@@ -41,10 +42,10 @@ requirements:
     - glib 2.51.*  # [not win]
     - pixman 0.34.*
     - zlib 1.2.*
-    - icu 56.*
+    - icu 58.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and py>=35]
 
 test:
   commands:
