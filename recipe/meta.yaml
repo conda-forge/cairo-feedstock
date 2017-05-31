@@ -7,7 +7,7 @@ package:
 source:
   fn: cairo-{{ version }}.tar.xz
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.gz
-  sha256: b86b4017a9abd565ef11c72b7faee9082a04118f
+  sha256: 7d36449c9a05c2c9b44248b10e9f82f0bca99f30e24848435e65aca77c28b3f9
 
 build:
   number: 4
