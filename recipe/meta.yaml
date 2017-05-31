@@ -1,4 +1,4 @@
-{% set version = "1.14.6" %}
+{% set version = "1.14.8" %}
 
 package:
   name: cairo
@@ -6,11 +6,11 @@ package:
 
 source:
   fn: cairo-{{ version }}.tar.xz
-  url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha256: 613cb38447b76a93ff7235e17acd55a78b52ea84a9df128c3f2257f8eaa7b252
+  url: http://cairographics.org/releases/cairo-{{ version }}.tar.gz
+  sha1: c6f7b99986f93c9df78653c3e6a3b5043f65145e
 
 build:
-  number: 4
+  number: 5
   skip: True  # [win and py>35]
   features:
     - vc9  # [win and py27]
