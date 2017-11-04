@@ -5,17 +5,15 @@ package:
   version: {{ version }}
 
 source:
-  fn: cairo-{{ version }}.tar.xz
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 613cb38447b76a93ff7235e17acd55a78b52ea84a9df128c3f2257f8eaa7b252
 
 build:
-  number: 4
-  skip: True  # [win and py>35]
+  number: 5
+  skip: True  # [win and (py35 or py36)]
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
+    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -25,27 +23,25 @@ requirements:
     - pkg-config  # [not win]
     - libtool  # [not win]
     - xz 5.2.*  # [not win]
-    - freetype 2.7|2.7.*  # [not win]
+    - freetype 2.7  # [not win]
     - fontconfig 2.12.*  # [not win]
     - glib 2.51.*  # [not win]
     - pixman 0.34.*
-    - libpng >=1.6.28,<1.7
-    - zlib 1.2.*
+    - libpng >=1.6.22,<1.6.31
+    - zlib 1.2.11
     - icu 58.*
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 14  # [win and (py35 or py36)]
   run:
-    - freetype 2.7|2.7.*  # [not win]
+    - freetype 2.7  # [not win]
     - fontconfig 2.12.*  # [not win]
-    - libpng >=1.6.28,<1.7
+    - libpng >=1.6.22,<1.6.31
     - glib 2.51.*  # [not win]
     - pixman 0.34.*
-    - zlib 1.2.*
+    - zlib 1.2.11
     - icu 58.*
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 14  # [win and (py35 or py36)]
 
 test:
   commands:
@@ -63,8 +59,8 @@ test:
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.so     # [linux]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX cairo  # [not win]
-    - conda inspect objects -p $PREFIX cairo  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://cairographics.org/
