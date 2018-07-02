@@ -1,0 +1,35 @@
+c_compiler:
+- vs2015
+fontconfig:
+- '2.13'
+freetype:
+- 2.8.1
+glib:
+- '2.55'
+icu:
+- '58'
+libpng:
+- 1.6.34
+pin_run_as_build:
+  fontconfig:
+    max_pin: x
+  freetype:
+    max_pin: x.x
+  glib:
+    max_pin: x.x
+  icu:
+    max_pin: x
+  libpng:
+    max_pin: x.x
+  pixman:
+    max_pin: x.x
+  xz:
+    max_pin: x.x
+  zlib:
+    max_pin: x.x
+pixman:
+- '0.34'
+xz:
+- '5.2'
+zlib:
+- '1.2'
