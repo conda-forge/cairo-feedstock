@@ -4,9 +4,12 @@
 # (See https://support.apple.com/en-us/HT201341 for the details).
 # Due to this change, we disable building X11 support for cairo on OS X by
 # default.
-export XWIN_ARGS=""
+
 if [ $(uname) == Darwin ]; then
-    export XWIN_ARGS="--disable-xlib -disable-xcb --disable-glitz"
+    XWIN_ARGS="--disable-xlib --disable-xcb --disable-glitz"
+fi
+if [ $(uname) == Linux ]; then
+    XWIN_ARGS="--disable-xlib --disable-xlib-xrender --enable-xcb-shm"
 fi
 
 # Most other autotools-based build systems add
