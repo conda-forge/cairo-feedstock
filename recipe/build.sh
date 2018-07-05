@@ -9,7 +9,7 @@ if [ $(uname) == Darwin ]; then
     XWIN_ARGS="--disable-xlib --disable-xcb --disable-glitz"
 fi
 if [ $(uname) == Linux ]; then
-    XWIN_ARGS="--disable-xlib --disable-xlib-xrender --enable-xcb-shm"
+    XWIN_ARGS="--enable-xcb-shm"
 fi
 
 # Most other autotools-based build systems add
