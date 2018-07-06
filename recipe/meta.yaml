@@ -66,8 +66,6 @@ test:
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.so     # [linux]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://cairographics.org/
