@@ -9,7 +9,7 @@ source:
   sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -66,8 +66,10 @@ test:
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/{{ each_cairo_lib }}.so     # [linux]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+
+    # Check pkg-config files.
+    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
+    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
 
 about:
   home: http://cairographics.org/
