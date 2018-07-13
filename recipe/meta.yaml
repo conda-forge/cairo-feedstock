@@ -73,6 +73,12 @@ test:
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
     - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
 
+    # check include files
+    - test -f $PREFIX/include/cairo/cairo.h           # [unix]
+
+    # check that cairo was built with fontconfig support
+    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo.h           # [unix]
+
 about:
   home: http://cairographics.org/
   license: LGPL 2.1 or MPL 1.1
