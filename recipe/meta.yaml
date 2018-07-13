@@ -15,41 +15,43 @@ build:
 
 requirements:
   build:
-    - posix  # [win]
-    - m2w64-xz  # [win]
-    - pkg-config  # [not win]
-    - libtool  # [not win]
-    - xz  # [not win]
+    - posix                 # [win]
+    - m2w64-xz              # [win]
+    - pkg-config            # [not win]
+    - libtool               # [not win]
+    - automake              # [not win]
+    - xz                    # [not win]
     - {{ compiler('c') }}
-    - pthread-stubs  # [linux]
-    - xcb-proto  # [linux]
-    - xorg-renderproto  # [linux]
-    - xorg-xproto  # [linux]
+    - pthread-stubs         # [linux]
+    - xcb-proto             # [linux]
+    - xorg-renderproto      # [linux]
+    - xorg-xproto           # [linux]
+    - automake              # [unix]
   host:
-    - freetype  # [not win]
-    - fontconfig  # [not win]
-    - glib  # [not win]
+    - freetype              # [not win]
+    - fontconfig            # [not win]
+    - glib                  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxrender       # [linux]
     - zlib
   run:
-    - freetype  # [not win]
-    - fontconfig  # [not win]
-    - glib  # [not win]
+    - freetype              # [not win]
+    - fontconfig            # [not win]
+    - glib                  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxrender       # [linux]
     - zlib
 
 test:
