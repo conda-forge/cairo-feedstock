@@ -9,7 +9,9 @@ source:
   sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
 
 build:
-  number: 1
+  number: 2
+  run_exports:
+    - {{ pin_subpackage('cairo') }}
 
 requirements:
   build:
@@ -70,6 +72,12 @@ test:
     # Check pkg-config files.
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
     - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
+
+    # check include files
+    - test -f $PREFIX/include/cairo/cairo.h           # [unix]
+
+    # check that cairo was built with fontconfig support
+    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo.h           # [unix]
 
 about:
   home: http://cairographics.org/
