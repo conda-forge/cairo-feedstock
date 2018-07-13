@@ -77,7 +77,7 @@ test:
     - test -f $PREFIX/include/cairo/cairo.h           # [unix]
 
     # check that cairo was built with fontconfig support
-    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo.h           # [unix]
+    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
 
 about:
   home: http://cairographics.org/
