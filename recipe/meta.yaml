@@ -9,7 +9,7 @@ source:
   sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -34,6 +34,7 @@ requirements:
     - xorg-libice  # [linux]
     - xorg-libsm  # [linux]
     - xorg-libx11  # [linux]
+    - xorg-libxext  # [linux]
     - xorg-libxrender  # [linux]
     - zlib
   run:
@@ -47,6 +48,7 @@ requirements:
     - xorg-libice  # [linux]
     - xorg-libsm  # [linux]
     - xorg-libx11  # [linux]
+    - xorg-libxext  # [linux]
     - xorg-libxrender  # [linux]
     - zlib
 
