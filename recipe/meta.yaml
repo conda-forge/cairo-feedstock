@@ -9,7 +9,7 @@ source:
   sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -19,23 +19,23 @@ requirements:
     - libtool  # [not win]
     - xz  # [not win]
     - {{ compiler('c') }}
-    - pthread-stubs  # [linux]
-    - xcb-proto  # [linux]
-    - xorg-renderproto  # [linux]
-    - xorg-xproto  # [linux]
+    - pthread-stubs  # [not win]
+    - xcb-proto  # [not win]
+    - xorg-renderproto  # [not win]
+    - xorg-xproto  # [not win]
   host:
     - freetype  # [not win]
     - fontconfig  # [not win]
     - glib  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb  # [not win]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice  # [not win]
+    - xorg-libsm  # [not win]
+    - xorg-libx11  # [not win]
+    - xorg-libxext  # [not win]
+    - xorg-libxrender  # [not win]
     - zlib
   run:
     - freetype  # [not win]
@@ -43,13 +43,13 @@ requirements:
     - glib  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb  # [not win]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice  # [not win]
+    - xorg-libsm  # [not win]
+    - xorg-libx11  # [not win]
+    - xorg-libxext  # [not win]
+    - xorg-libxrender  # [not win]
     - zlib
 
 test:
@@ -71,7 +71,7 @@ test:
 
     # Check pkg-config files.
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
-    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
+    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [not win]
 
 about:
   home: http://cairographics.org/
