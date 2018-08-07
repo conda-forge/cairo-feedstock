@@ -14,6 +14,11 @@ fi
 
 bash autogen.sh
 
+# Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
+# process of excising Libtool files from our packages. Existing ones can break
+# the build while this happens.
+find $PREFIX -name '*.la' -delete
+
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \
@@ -29,3 +34,7 @@ make -j${CPU_COUNT}
 # Hangs for > 10 minutes on Linux
 #make check -j${CPU_COUNT}
 make install -j${CPU_COUNT}
+
+# Remove any new Libtool files we may have installed. It is intended that
+# conda-build will eventually do this automatically.
+find $PREFIX -name '*.la' -delete
