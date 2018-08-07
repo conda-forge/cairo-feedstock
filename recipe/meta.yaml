@@ -9,27 +9,31 @@ source:
   sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
 
 build:
-  number: 4
+  number: 5
+  run_exports:
+    - {{ pin_subpackage('cairo') }}
 
 requirements:
   build:
-    - posix  # [win]
-    - m2w64-xz  # [win]
-    - pkg-config  # [not win]
-    - libtool  # [not win]
-    - xz  # [not win]
+    - posix                 # [win]
+    - m2w64-xz              # [win]
+    - pkg-config            # [not win]
+    - libtool               # [not win]
+    - automake              # [not win]
+    - xz                    # [not win]
     - {{ compiler('c') }}
-    - pthread-stubs  # [linux]
-    - xcb-proto  # [linux]
-    - xorg-renderproto  # [linux]
-    - xorg-xproto  # [linux]
+    - pthread-stubs         # [linux]
+    - xcb-proto             # [linux]
+    - xorg-renderproto      # [linux]
+    - xorg-xproto           # [linux]
+    - automake              # [unix]
   host:
-    - freetype  # [not win]
-    - fontconfig  # [not win]
-    - glib  # [not win]
+    - freetype              # [not win]
+    - fontconfig            # [not win]
+    - glib                  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb                # [linux]
     - pixman
     - xorg-libice  # [linux]
     - xorg-libsm  # [linux]
@@ -38,12 +42,12 @@ requirements:
     - xorg-libxrender  # [linux]
     - zlib
   run:
-    - freetype  # [not win]
-    - fontconfig  # [not win]
-    - glib  # [not win]
+    - freetype              # [not win]
+    - fontconfig            # [not win]
+    - glib                  # [not win]
     - icu
     - libpng
-    - libxcb  # [linux]
+    - libxcb                # [linux]
     - pixman
     - xorg-libice  # [linux]
     - xorg-libsm  # [linux]
@@ -72,6 +76,12 @@ test:
     # Check pkg-config files.
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc   # [osx]
     - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc     # [linux]
+
+    # check include files
+    - test -f $PREFIX/include/cairo/cairo.h           # [unix]
+
+    # check that cairo was built with fontconfig support
+    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
 
 about:
   home: http://cairographics.org/

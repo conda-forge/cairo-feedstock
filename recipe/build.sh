@@ -12,11 +12,7 @@ if [ $(uname) == Linux ]; then
     XWIN_ARGS="--enable-xcb-shm"
 fi
 
-# Most other autotools-based build systems add
-# prefix/include and prefix/lib automatically!
-export CFLAGS=${CFLAGS}" -I${PREFIX}/include"
-export CXXFLAGS=${CXXFLAGS}" -I${PREFIX}/include"
-export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
+bash autogen.sh
 
 # Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
 # process of excising Libtool files from our packages. Existing ones can break
