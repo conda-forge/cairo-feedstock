@@ -1,12 +1,12 @@
-{% set version = "1.14.12" %}
+{% set version = "1.15.12" %}
 
 package:
   name: cairo
   version: {{ version }}
 
 source:
-  url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha256: 8c90f00c500b2299c0a323dd9beead2a00353752b2092ead558139bd67f7bf16
+  url: http://cairographics.org/snapshots/cairo-{{ version }}.tar.xz
+  sha256: 7623081b94548a47ee6839a7312af34e9322997806948b6eec421a8c6d0594c9
 
 build:
   number: 5
