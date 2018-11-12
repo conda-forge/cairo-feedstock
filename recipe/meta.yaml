@@ -85,6 +85,8 @@ test:
 
 about:
   home: http://cairographics.org/
+  dev_url: https://gitlab.freedesktop.org/cairo/cairo
+  doc_url: https://www.cairographics.org/documentation/
   license: LGPL 2.1 or MPL 1.1
   license_file: COPYING
   summary: 'Cairo is a 2D graphics library with support for multiple output devices.'
