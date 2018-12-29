@@ -7,17 +7,17 @@ channel_sources:
 channel_targets:
 - conda-forge gcc7
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil-comp7
 fontconfig:
 - '2.13'
 freetype:
 - 2.9.1
 glib:
-- '2.56'
+- '2.58'
 icu:
 - '58'
 libpng:
-- 1.6.34
+- 1.6.35
 pin_run_as_build:
   fontconfig:
     max_pin: x
