@@ -1,13 +1,19 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
-build_number_decrement:
-- '1000'
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 c_compiler:
-- toolchain_c
+- gcc
+c_compiler_version:
+- '7'
+cdt_arch:
+- aarch64
+cdt_name:
+- cos7
 channel_sources:
-- conda-forge,defaults
+- conda-forge,c4aarch64,defaults
 channel_targets:
 - conda-forge main
+docker_image:
+- condaforge/linux-anvil-aarch64
 fontconfig:
 - '2.13'
 freetype:
@@ -15,20 +21,14 @@ freetype:
 glib:
 - '2.58'
 icu:
-- '58'
+- '60'
 libpng:
-- 1.6.35
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
+- 1.6.36
 pin_run_as_build:
   fontconfig:
     max_pin: x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   icu:
     max_pin: x
   libpng:
@@ -43,10 +43,5 @@ pixman:
 - '0.34'
 xz:
 - '5.2'
-zip_keys:
-- - c_compiler
-  - channel_sources
-  - channel_targets
-  - build_number_decrement
 zlib:
 - '1.2'
