@@ -19,7 +19,7 @@ requirements:
     - m2w64-xz              # [win]
     - pkg-config            # [not win]
     - libtool               # [not win]
-    - automake
+    - automake              # [not win]
     - make                  # [not win]
     - xz                    # [not win]
     - {{ compiler('c') }}
