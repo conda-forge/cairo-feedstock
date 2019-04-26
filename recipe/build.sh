@@ -12,6 +12,8 @@ if [ $(uname) == Linux ]; then
     XWIN_ARGS="--enable-xcb-shm"
 fi
 
+set +e
+
 bash autogen.sh
 
 # Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
@@ -27,7 +29,9 @@ find $PREFIX -name '*.la' -delete
     --enable-pdf \
     --enable-svg \
     $XWIN_ARGS \
-    --disable-gtk-doc || (cat config.log && exit 1)
+    --disable-gtk-doc
+
+cat config.log && exit 1
 
 make -j${CPU_COUNT}
 # FAIL: check-link on OS X
