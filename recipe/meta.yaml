@@ -19,14 +19,14 @@ requirements:
     - m2w64-xz              # [win]
     - pkg-config            # [not win]
     - libtool               # [not win]
-    - automake              # [not win]
+    - automake
+    - make                  # [not win]
     - xz                    # [not win]
     - {{ compiler('c') }}
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - xorg-renderproto      # [linux]
     - xorg-xproto           # [linux]
-    - automake              # [unix]
   host:
     - freetype              # [not win]
     - fontconfig            # [not win]
