@@ -26,8 +26,8 @@ find $PREFIX -name '*.la' -delete
     --enable-ps \
     --enable-pdf \
     --enable-svg \
-    --disable-gtk-doc \
-    $XWIN_ARGS
+    $XWIN_ARGS \
+    --disable-gtk-doc || (cat config.log && exit 1)
 
 make -j${CPU_COUNT}
 # FAIL: check-link on OS X
