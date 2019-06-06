@@ -1,13 +1,13 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
-build_number_decrement:
-- '0'
 c_compiler:
 - clang
+c_compiler_version:
+- '4'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
 fontconfig:
 - '2.13'
 freetype:
@@ -27,8 +27,6 @@ pin_run_as_build:
     max_pin: x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   icu:
     max_pin: x
   libpng:
@@ -43,10 +41,5 @@ pixman:
 - '0.34'
 xz:
 - '5.2'
-zip_keys:
-- - c_compiler
-  - channel_sources
-  - channel_targets
-  - build_number_decrement
 zlib:
 - '1.2'
