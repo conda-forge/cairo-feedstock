@@ -11,7 +11,7 @@ fi
 if [ $(uname) == Linux ]; then
     XWIN_ARGS="--enable-xcb-shm"
 fi
-
+LDFLAGS=$(echo $LDFLAGS | sed -e 's/-Wl,--gc-sections//')
 bash autogen.sh
 
 # Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
