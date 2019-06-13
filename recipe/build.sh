@@ -11,7 +11,9 @@ fi
 if [ $(uname) == Linux ]; then
     XWIN_ARGS="--enable-xcb-shm"
 fi
-export ax_cv_c_float_words_bigendian="no"
+if [ $(uname -m) == x86_64 ]; then
+    export ax_cv_c_float_words_bigendian="no"
+fi
 bash autogen.sh
 
 # Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
