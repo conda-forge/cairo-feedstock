@@ -20,7 +20,6 @@ bash autogen.sh
 # process of excising Libtool files from our packages. Existing ones can break
 # the build while this happens.
 find $PREFIX -name '*.la' -delete
-
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \
