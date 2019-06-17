@@ -9,7 +9,7 @@ source:
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
 
 build:
-  number: 1000
+  number: 1001
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -20,13 +20,13 @@ requirements:
     - pkg-config            # [not win]
     - libtool               # [not win]
     - automake              # [not win]
+    - make                  # [not win]
     - xz                    # [not win]
     - {{ compiler('c') }}
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - xorg-renderproto      # [linux]
     - xorg-xproto           # [linux]
-    - automake              # [unix]
   host:
     - freetype              # [not win]
     - fontconfig            # [not win]

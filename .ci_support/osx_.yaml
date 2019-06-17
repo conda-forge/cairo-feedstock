@@ -1,13 +1,13 @@
-build_number_decrement:
-- '0'
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- gcc
+- clang
+c_compiler_version:
+- '4'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
-docker_image:
-- condaforge/linux-anvil-comp7
+- conda-forge main
 fontconfig:
 - '2.13'
 freetype:
@@ -18,13 +18,15 @@ icu:
 - '58'
 libpng:
 - 1.6.35
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
 pin_run_as_build:
   fontconfig:
     max_pin: x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   icu:
     max_pin: x
   libpng:
@@ -36,14 +38,8 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 pixman:
-- '0.34'
+- '0.38'
 xz:
 - '5.2'
-zip_keys:
-- - c_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement
 zlib:
 - '1.2'
