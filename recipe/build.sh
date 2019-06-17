@@ -14,13 +14,15 @@ fi
 
 set +e
 
+if [ $(uname -m) == x86_64 ]; then
+    export ax_cv_c_float_words_bigendian="no"
+fi
 bash autogen.sh
 
 # Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
 # process of excising Libtool files from our packages. Existing ones can break
 # the build while this happens.
 find $PREFIX -name '*.la' -delete
-
 ./configure \
     --prefix="${PREFIX}" \
     --enable-warnings \

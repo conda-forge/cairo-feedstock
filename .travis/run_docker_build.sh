@@ -54,6 +54,10 @@ rm -f "$DONE_CANARY"
 # Enable running in interactive mode attached to a tty
 DOCKER_RUN_ARGS=" -it "
 
+if [ -z "${CI}" ]; then
+    DOCKER_RUN_ARGS="-it "
+fi
+
 export UPLOAD_PACKAGES="${UPLOAD_PACKAGES:-True}"
 docker run ${DOCKER_RUN_ARGS} \
            -v "${RECIPE_ROOT}":/home/conda/recipe_root:ro,z \
@@ -62,6 +66,7 @@ docker run ${DOCKER_RUN_ARGS} \
            -e BINSTAR_TOKEN \
            -e HOST_USER_ID \
            -e UPLOAD_PACKAGES \
+           -e CI \
            $DOCKER_IMAGE \
            bash \
            /home/conda/feedstock_root/${PROVIDER_DIR}/build_steps.sh
