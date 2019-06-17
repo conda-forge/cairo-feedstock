@@ -51,8 +51,6 @@ fi
 mkdir -p "$ARTIFACTS"
 DONE_CANARY="$ARTIFACTS/conda-forge-build-done-${CONFIG}"
 rm -f "$DONE_CANARY"
-# Enable running in interactive mode attached to a tty
-DOCKER_RUN_ARGS=" -it "
 
 if [ -z "${CI}" ]; then
     DOCKER_RUN_ARGS="-it "

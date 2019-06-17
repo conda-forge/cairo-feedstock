@@ -74,7 +74,6 @@ jobs:
     - script: |
         set "CI=azure"
         run_conda_forge_build_setup
-
       displayName: conda-forge build setup
     
 
