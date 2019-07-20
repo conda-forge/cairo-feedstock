@@ -15,7 +15,7 @@ freetype:
 glib:
 - '2.58'
 icu:
-- '58'
+- '64.2'
 libpng:
 - 1.6.35
 macos_machine:
