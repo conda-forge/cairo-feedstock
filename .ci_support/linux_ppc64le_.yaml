@@ -17,7 +17,7 @@ glib:
 icu:
 - '64.2'
 libpng:
-- 1.6.36
+- '1.6'
 pin_run_as_build:
   fontconfig:
     max_pin: x

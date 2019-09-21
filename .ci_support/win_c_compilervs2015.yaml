@@ -7,7 +7,7 @@ channel_targets:
 icu:
 - '64.2'
 libpng:
-- 1.6.35
+- '1.6'
 pin_run_as_build:
   icu:
     max_pin: x
