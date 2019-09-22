@@ -49,11 +49,11 @@ requirements:
     - libpng
     - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxext          # [linux]
+    - xorg-libxrender       # [linux]
     - zlib
 
 test:
