@@ -9,6 +9,7 @@ source:
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
   patches:
     - windows_enable_cairo_gobject.patch  # [win]
+    - windows_pc_files.patch  # [win]
 
 build:
   number: 1002

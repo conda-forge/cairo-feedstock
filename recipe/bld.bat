@@ -51,3 +51,7 @@ move src\release\cairo.lib %LIBRARY_LIB%
 move src\release\cairo-static.lib %LIBRARY_LIB%
 move util\cairo-gobject\release\cairo-gobject.dll %LIBRARY_BIN%
 move util\cairo-gobject\release\cairo-gobject.lib %LIBRARY_LIB%
+
+for %%F in (pc-files\*.pc) do (
+  envsubst '${LIBRARY_PREFIX}${PKG_VERSION}' < %%F > %LIBRARY_LIB%\pkgconfig\%%~nF.pc
+)
