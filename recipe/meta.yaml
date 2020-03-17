@@ -12,7 +12,7 @@ source:
     - windows_pc_files.patch  # [win]
 
 build:
-  number: 1002
+  number: 1003
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
