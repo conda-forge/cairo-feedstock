@@ -4,10 +4,12 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+glib:
+- '2.58'
 icu:
 - '64.2'
 libpng:
-- 1.6.35
+- '1.6'
 pin_run_as_build:
   icu:
     max_pin: x
@@ -15,9 +17,16 @@ pin_run_as_build:
     max_pin: x.x
   pixman:
     max_pin: x.x
+  vc:
+    max_pin: x
   zlib:
     max_pin: x.x
 pixman:
 - '0.38'
+vc:
+- '14'
+zip_keys:
+- - vc
+  - c_compiler
 zlib:
 - '1.2'

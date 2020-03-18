@@ -7,9 +7,13 @@ package:
 source:
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
+  patches:
+    - windows_enable_cairo_gobject.patch  # [win]
+    - windows_pc_files.patch  # [win]
 
 build:
-  number: 1002
+  number: 1003
+  skip: true    # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -30,7 +34,7 @@ requirements:
   host:
     - freetype              # [not win]
     - fontconfig            # [not win]
-    - glib                  # [not win]
+    - glib
     - icu
     - libpng
     - libxcb                # [linux]
@@ -44,7 +48,7 @@ requirements:
   run:
     - freetype              # [not win]
     - fontconfig            # [not win]
-    - glib                  # [not win]
+    - glib
     - icu
     - libpng
     - libxcb                # [linux]
