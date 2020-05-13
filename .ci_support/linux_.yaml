@@ -15,7 +15,7 @@ freetype:
 glib:
 - '2.58'
 icu:
-- '64.2'
+- '67'
 libpng:
 - '1.6'
 pin_run_as_build:
