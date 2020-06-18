@@ -32,7 +32,7 @@ requirements:
     - xorg-renderproto      # [linux]
     - xorg-xproto           # [linux]
   host:
-    - freetype              # [not win]
+    - freetype
     - fontconfig            # [not win]
     - glib
     - icu
@@ -46,7 +46,7 @@ requirements:
     - xorg-libxrender  # [linux]
     - zlib
   run:
-    - freetype              # [not win]
+    - freetype
     - fontconfig            # [not win]
     - glib
     - icu

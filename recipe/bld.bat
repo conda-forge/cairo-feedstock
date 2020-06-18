@@ -19,7 +19,7 @@ make -f Makefile.win32 CFG=release ^
   PIXMAN_LIBS=%LIBRARY_LIB_CW%/pixman-1.lib ^
   ZLIB_CFLAGS=-I%LIBRARY_INC_CW% ^
   LIBPNG_CFLAGS=-I%LIBRARY_INC_CW% ^
-  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %LIBRARY_LIB_CW%/libpng.lib %LIBRARY_LIB_CW%/zlib.lib'
+  CAIRO_LIBS='gdi32.lib msimg32.lib user32.lib %LIBRARY_LIB_CW%/libpng.lib %LIBRARY_LIB_CW%/zlib.lib %LIBRARY_LIB_CW%/freetype.lib'
 if errorlevel 1 exit 1
 pushd util\cairo-gobject
 make -f Makefile.win32 CFG=release ^

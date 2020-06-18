@@ -11,6 +11,8 @@ icu:
 libpng:
 - '1.6'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   icu:
     max_pin: x
   libpng:
