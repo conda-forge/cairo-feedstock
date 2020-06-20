@@ -44,6 +44,7 @@ move src\cairo-script.h %CAIRO_INC%
 move src\cairo-ps.h %CAIRO_INC%
 move src\cairo-pdf.h %CAIRO_INC%
 move src\cairo-svg.h %CAIRO_INC%
+move src\cairo-ft.h %CAIRO_INC%
 move util\cairo-gobject\cairo-gobject.h %CAIRO_INC%
 
 move src\release\cairo.dll %LIBRARY_BIN%
