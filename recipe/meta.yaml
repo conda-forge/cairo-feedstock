@@ -10,7 +10,8 @@ source:
   patches:
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
-    - windows_enable_freetype.patch # [win]
+    - windows_enable_freetype.patch  # [win]
+
 build:
   number: 1005
   skip: true    # [win and vc<14]
