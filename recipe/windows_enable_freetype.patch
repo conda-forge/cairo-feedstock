@@ -1,5 +1,5 @@
---- a/Makefile.win32.features
-+++ b/Makefile.win32.features
+--- a/build/Makefile.win32.features
++++ b/build/Makefile.win32.features
 @@ -26,7 +26,7 @@ CAIRO_HAS_EGL_FUNCTIONS=0
  CAIRO_HAS_GLX_FUNCTIONS=0
  CAIRO_HAS_WGL_FUNCTIONS=0
