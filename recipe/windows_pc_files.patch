@@ -97,3 +97,17 @@
 +
 +Libs: -L${libdir} -lcairo
 +Cflags: -I${includedir}/cairo
+--- pc-files/cairo-ft.pc
++++ pc-files/cairo-ft.pc
+@@ -0,0 +1,11 @@
++prefix=${LIBRARY_PREFIX}
++exec_prefix=${prefix}
++libdir=${prefix}/lib
++includedir=${prefix}/include
++
++Name: freetype
++Description: Freetype font library
++Version: ${PKG_VERSION}
++
++Requires: cairo
++Cflags: -I${includedir}/cairo
