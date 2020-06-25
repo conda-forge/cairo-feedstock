@@ -105,9 +105,9 @@
 +libdir=${prefix}/lib
 +includedir=${prefix}/include
 +
-+Name: freetype
-+Description: Freetype font library
++Name: cairo-ft
++Description: FreeType font backend for cairo graphics library
 +Version: ${PKG_VERSION}
 +
-+Requires: cairo
++Requires: cairo freetype2
 +Cflags: -I${includedir}/cairo
