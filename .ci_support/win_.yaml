@@ -4,6 +4,8 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+freetype:
+- 2.9.1
 glib:
 - '2.58'
 icu:
@@ -11,6 +13,8 @@ icu:
 libpng:
 - '1.6'
 pin_run_as_build:
+  freetype:
+    max_pin: x
   icu:
     max_pin: x
   libpng:
