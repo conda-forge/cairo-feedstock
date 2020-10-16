@@ -13,7 +13,7 @@ fontconfig:
 freetype:
 - 2.9.1
 glib:
-- '2.58'
+- 2.64.6
 icu:
 - '67'
 libpng:
@@ -22,8 +22,6 @@ pin_run_as_build:
   fontconfig:
     max_pin: x
   freetype:
-    max_pin: x
-  icu:
     max_pin: x
   libpng:
     max_pin: x.x
@@ -35,6 +33,8 @@ pin_run_as_build:
     max_pin: x.x
 pixman:
 - '0.38'
+target_platform:
+- linux-ppc64le
 xz:
 - '5.2'
 zlib:
