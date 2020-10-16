@@ -49,7 +49,6 @@ requirements:
   run:
     - freetype
     - fontconfig            # [not win]
-    - glib
     - icu
     - libpng
     - libxcb                # [linux]
