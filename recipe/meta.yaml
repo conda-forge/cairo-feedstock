@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
 
 build:
-  number: 1005
+  number: 1006
   skip: true    # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('cairo') }}
