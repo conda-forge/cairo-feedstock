@@ -13,8 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
 
 build:
-  number: 1005
-  skip: true    # [win and vc<14]
+  number: 1006
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -49,7 +48,6 @@ requirements:
   run:
     - freetype
     - fontconfig            # [not win]
-    - glib
     - icu
     - libpng
     - libxcb                # [linux]

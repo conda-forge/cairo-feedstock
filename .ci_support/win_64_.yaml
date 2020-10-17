@@ -7,15 +7,13 @@ channel_targets:
 freetype:
 - 2.9.1
 glib:
-- '2.58'
+- 2.64.6
 icu:
 - '67'
 libpng:
 - '1.6'
 pin_run_as_build:
   freetype:
-    max_pin: x
-  icu:
     max_pin: x
   libpng:
     max_pin: x.x
@@ -25,6 +23,8 @@ pin_run_as_build:
     max_pin: x.x
 pixman:
 - '0.38'
+target_platform:
+- win-64
 vc:
 - '14'
 zlib:
