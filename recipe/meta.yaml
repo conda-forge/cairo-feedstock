@@ -26,6 +26,7 @@ requirements:
     - automake              # [not win]
     - make                  # [not win]
     - xz                    # [not win]
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/libtool/build-aux/config.* ./build
 
 # As of Mac OS 10.8, X11 is no longer included by default
 # (See https://support.apple.com/en-us/HT201341 for the details).
