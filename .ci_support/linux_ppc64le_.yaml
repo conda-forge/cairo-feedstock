@@ -2,6 +2,8 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '8'
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,7 +13,7 @@ docker_image:
 fontconfig:
 - '2.13'
 freetype:
-- 2.9.1
+- '2'
 glib:
 - 2.64.6
 icu:
@@ -25,14 +27,12 @@ pin_run_as_build:
     max_pin: x
   libpng:
     max_pin: x.x
-  pixman:
-    max_pin: x.x
   xz:
     max_pin: x.x
   zlib:
     max_pin: x.x
 pixman:
-- '0.38'
+- '0'
 target_platform:
 - linux-ppc64le
 xz:

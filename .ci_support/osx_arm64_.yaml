@@ -1,25 +1,25 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '7'
-cdt_name:
-- cos6
+- '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/rust_dev,conda-forge,https://conda-web.anaconda.org/conda-forge
 channel_targets:
 - conda-forge main
-docker_image:
-- condaforge/linux-anvil-comp7
 fontconfig:
 - '2.13'
 freetype:
 - '2'
 glib:
-- 2.64.6
+- '2.66'
 icu:
 - '67'
 libpng:
 - '1.6'
+macos_machine:
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   fontconfig:
     max_pin: x
@@ -34,7 +34,7 @@ pin_run_as_build:
 pixman:
 - '0'
 target_platform:
-- linux-64
+- osx-arm64
 xz:
 - '5.2'
 zlib:
