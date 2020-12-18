@@ -5,7 +5,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge/label/rust_dev,conda-forge,https://conda-web.anaconda.org/conda-forge
+- conda-forge/label/rust_dev,conda-forge
 channel_targets:
 - conda-forge main
 fontconfig:
@@ -15,7 +15,7 @@ freetype:
 glib:
 - '2.66'
 icu:
-- '67'
+- '68'
 libpng:
 - '1.6'
 macos_machine:

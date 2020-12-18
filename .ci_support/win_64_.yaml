@@ -7,9 +7,9 @@ channel_targets:
 freetype:
 - '2'
 glib:
-- 2.64.6
+- '2.66'
 icu:
-- '67'
+- '68'
 libpng:
 - '1.6'
 pin_run_as_build:
