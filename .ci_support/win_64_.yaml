@@ -4,15 +4,19 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+fontconfig:
+- '2.13'
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 icu:
 - '68'
 libpng:
 - '1.6'
 pin_run_as_build:
+  fontconfig:
+    max_pin: x
   freetype:
     max_pin: x
   libpng:
