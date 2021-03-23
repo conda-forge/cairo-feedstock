@@ -15,7 +15,7 @@ fontconfig:
 freetype:
 - '2'
 glib:
-- '2.66'
+- '2'
 icu:
 - '68'
 libpng:

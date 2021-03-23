@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
 
 build:
-  number: 1007
+  number: 1008
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -34,7 +34,7 @@ requirements:
     - xorg-xproto           # [linux]
   host:
     - freetype
-    - fontconfig            # [not win]
+    - fontconfig
     - glib
     - icu
     - libpng
@@ -48,7 +48,7 @@ requirements:
     - zlib
   run:
     - freetype
-    - fontconfig            # [not win]
+    - fontconfig
     - icu
     - libpng
     - libxcb                # [linux]
@@ -101,3 +101,4 @@ extra:
     - jakirkham
     - ocefpaf
     - pkgw
+    - tschoonj
