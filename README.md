@@ -3,7 +3,7 @@ About cairo
 
 Home: http://cairographics.org/
 
-Package license: LGPL 2.1 or MPL 1.1
+Package license: LGPL-2.1-only or MPL-1.1
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cairo-feedstock/blob/master/LICENSE.txt)
 
