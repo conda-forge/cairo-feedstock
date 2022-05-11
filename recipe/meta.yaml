@@ -11,9 +11,11 @@ source:
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
     - windows_enable_freetype.patch  # [win]
+    # patch below is upstream, remove for releases >= 1.17.6
+    - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch
 
 build:
-  number: 1013
+  number: 1014
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -90,7 +92,7 @@ about:
   dev_url: https://gitlab.freedesktop.org/cairo/cairo
   doc_url: https://www.cairographics.org/documentation/
   license: LGPL-2.1-only or MPL-1.1
-  license_file: 
+  license_file:
     - COPYING
     - COPYING-LGPL-2.1
     - COPYING-MPL-1.1
