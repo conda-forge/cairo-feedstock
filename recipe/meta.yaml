@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
 
 build:
-  number: 1011
+  number: 1012
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -47,18 +47,11 @@ requirements:
     - xorg-libxrender  # [linux]
     - zlib
   run:
-    - freetype
-    - fontconfig
-    - icu
-    - libpng
-    - libxcb                # [linux]
-    - pixman
     - xorg-libice  # [linux]
     - xorg-libsm  # [linux]
     - xorg-libx11  # [linux]
     - xorg-libxext  # [linux]
     - xorg-libxrender  # [linux]
-    - zlib
 
 test:
   commands:
