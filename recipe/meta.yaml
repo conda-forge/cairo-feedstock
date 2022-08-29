@@ -13,7 +13,7 @@ source:
     - windows_enable_freetype.patch  # [win]
 
 build:
-  number: 1012
+  number: 1013
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -52,6 +52,11 @@ requirements:
     - xorg-libx11  # [linux]
     - xorg-libxext  # [linux]
     - xorg-libxrender  # [linux]
+    # hmaarrfk: 2022/08
+    # While the dependencies below should be captured
+    # by run_exports, run_exports doesn't necessary
+    # bring in compile time depenencies
+    - zlib
 
 test:
   commands:
