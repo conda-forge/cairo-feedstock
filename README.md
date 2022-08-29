@@ -207,6 +207,3 @@ Feedstock Maintainers
 * [@pkgw](https://github.com/pkgw/)
 * [@tschoonj](https://github.com/tschoonj/)
 
-
-<!-- dummy commit to enable rerendering -->
-
