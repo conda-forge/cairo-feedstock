@@ -12,7 +12,7 @@ source:
     - windows_pc_files.patch  # [win]
     - windows_enable_freetype.patch  # [win]
     # patch below is upstream, remove for releases >= 1.17.6
-    - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch
+    - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 
 build:
   number: 1014
