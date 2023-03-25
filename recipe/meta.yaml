@@ -15,7 +15,7 @@ source:
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 
 build:
-  number: 1014
+  number: 1015
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -26,6 +26,11 @@ requirements:
     - pkg-config            # [not win]
     - libtool               # [not win]
     - automake              # [not win]
+    # 2023/03 hmaarrfk
+    # i'm not sure why it is important for autoconf to be pinned
+    # it seems that if it is not, gtkdoc will attempt
+    # to be executed even if it isn't installed.
+    - autoconf 2.69         # [not win]
     - make                  # [not win]
     - xz                    # [not win]
     - libtool  # [unix]
