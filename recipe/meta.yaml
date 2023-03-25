@@ -26,7 +26,7 @@ requirements:
     - pkg-config            # [not win]
     - libtool               # [not win]
     - automake              # [not win]
-    - autoconf 2.70         # [not win]
+    - autoconf 2.71=*_0         # [not win]
     # - autoconf 2.69         # [not win]
     - make                  # [not win]
     - xz                    # [not win]
