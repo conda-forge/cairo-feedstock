@@ -15,7 +15,7 @@ source:
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 
 build:
-  number: 1015
+  number: 1016
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
