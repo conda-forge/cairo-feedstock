@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '11'
+- '12'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -24,6 +24,8 @@ icu:
 - '72'
 libpng:
 - '1.6'
+libxcb:
+- '1.15'
 pixman:
 - '0'
 target_platform:
