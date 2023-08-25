@@ -11,7 +11,7 @@ freetype:
 glib:
 - '2'
 icu:
-- '72'
+- '73'
 libpng:
 - '1.6'
 pixman:
