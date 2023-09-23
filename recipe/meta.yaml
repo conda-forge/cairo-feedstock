@@ -1,4 +1,4 @@
-{% set version = "1.16.0" %}
+{% set version = "1.18.0" %}
 
 package:
   name: cairo
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha256: 5e7b29b3f113ef870d1e3ecf8adf21f923396401604bda16d44be45e66052331
+  sha256: 243a0736b978a33dee29f9cca7521733b78a65b5418206fef7bd1c3d4cf10b64
   patches:
     - windows_enable_cairo_gobject.patch  # [win]
     - windows_pc_files.patch  # [win]
@@ -15,7 +15,7 @@ source:
     - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 
 build:
-  number: 1017
+  number: 0
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
