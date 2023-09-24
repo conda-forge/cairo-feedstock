@@ -7,12 +7,6 @@ package:
 source:
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
   sha256: 243a0736b978a33dee29f9cca7521733b78a65b5418206fef7bd1c3d4cf10b64
-  patches:
-    - windows_enable_cairo_gobject.patch  # [win]
-    - windows_pc_files.patch  # [win]
-    - windows_enable_freetype.patch  # [win]
-    # patch below is upstream, remove for releases >= 1.17.6
-    - 0001-Ref-and-destroy-the-cairo-surface-handed-off-to-Core.patch  # [osx]
 
 build:
   number: 0
@@ -21,20 +15,13 @@ build:
 
 requirements:
   build:
-    - posix                 # [win]
     - m2w64-xz              # [win]
     - pkg-config            # [not win]
-    - libtool               # [not win]
-    - automake              # [not win]
-    # 2023/03 hmaarrfk
-    # i'm not sure why it is important for autoconf to be pinned
-    # it seems that if it is not, gtkdoc will attempt
-    # to be executed even if it isn't installed.
-    - autoconf 2.69         # [not win]
-    - make                  # [not win]
     - xz                    # [not win]
-    - libtool  # [unix]
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - meson
+    - ninja
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - xorg-renderproto      # [linux]
