@@ -20,6 +20,15 @@ elif test $(uname) == Linux ; then
     meson_config_args+=(-Dxlib-xcb=enabled)
 fi
 
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+    # See: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/134
+    cat <<EOF >cross_file.txt
+[properties]
+ipc_rmid_deferred_release = true
+EOF
+    meson_config_args+=(--cross-file cross_file.txt)
+fi
+
 meson setup builddir \
     ${MESON_ARGS} \
     "${meson_config_args[@]}" \
