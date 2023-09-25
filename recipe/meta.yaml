@@ -16,12 +16,12 @@ build:
 requirements:
   build:
     - m2w64-xz              # [win]
-    - pkg-config            # [not win]
     - xz                    # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - meson
     - ninja
+    - pkg-config
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
     - xorg-renderproto      # [linux]
