@@ -7,6 +7,7 @@ export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
 
 meson_config_args=(
     -Dfontconfig=enabled
+    -Dfreetype=enabled
     -Dglib=enabled
 )
 
