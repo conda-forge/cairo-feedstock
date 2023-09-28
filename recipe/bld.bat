@@ -6,11 +6,13 @@ set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig;%B
 set "LIBRARY_PREFIX_M=%LIBRARY_PREFIX:\=/%"
 
 %BUILD_PREFIX%\Scripts\meson setup builddir ^
-  --wrap-mode=nofallback ^
   --buildtype=release ^
+  --default-library=both ^
   --prefix=%LIBRARY_PREFIX_M% ^
+  --wrap-mode=nofallback ^
   --backend=ninja ^
   -Dfontconfig=enabled ^
+  -Dfreetype=enabled ^
   -Dglib=enabled
 if errorlevel 1 exit 1
 
