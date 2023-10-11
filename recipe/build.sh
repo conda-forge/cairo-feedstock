@@ -1,43 +1,42 @@
 #!/bin/bash
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* ./build
 
-# As of Mac OS 10.8, X11 is no longer included by default
-# (See https://support.apple.com/en-us/HT201341 for the details).
-# Due to this change, we disable building X11 support for cairo on OS X by
-# default.
+set -ex
 
-if [ $(uname) == Darwin ]; then
-    XWIN_ARGS="--disable-xlib --disable-xcb --disable-glitz"
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
+export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
+
+meson_config_args=(
+    -Dfontconfig=enabled
+    -Dfreetype=enabled
+    -Dglib=enabled
+)
+
+if test $(uname) == Darwin ; then
+    meson_config_args+=(
+        -Dxlib=disabled
+        -Dxlib-xcb=disabled
+        -Dxcb=disabled
+    )
+elif test $(uname) == Linux ; then
+    meson_config_args+=(-Dxlib-xcb=enabled)
 fi
-if [ $(uname) == Linux ]; then
-    XWIN_ARGS="--enable-xcb-shm"
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+    # See: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/134
+    cat <<EOF >cross_file.txt
+[properties]
+ipc_rmid_deferred_release = true
+EOF
+    meson_config_args+=(--cross-file cross_file.txt)
 fi
-if [ $(uname -m) == x86_64 ]; then
-    export ax_cv_c_float_words_bigendian="no"
-fi
-bash autogen.sh
 
-# Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
-# process of excising Libtool files from our packages. Existing ones can break
-# the build while this happens.
-find $PREFIX -name '*.la' -delete
-./configure \
-    --prefix="${PREFIX}" \
-    --enable-warnings \
-    --enable-ft \
-    --enable-ps \
-    --enable-pdf \
-    --enable-svg \
-    --disable-gtk-doc \
-    $XWIN_ARGS
-
-make -j${CPU_COUNT}
-# FAIL: check-link on OS X
-# Hangs for > 10 minutes on Linux
-#make check -j${CPU_COUNT}
-make install -j${CPU_COUNT}
-
-# Remove any new Libtool files we may have installed. It is intended that
-# conda-build will eventually do this automatically.
-find $PREFIX -name '*.la' -delete
+meson setup builddir \
+    ${MESON_ARGS} \
+    "${meson_config_args[@]}" \
+    --buildtype=release \
+    --default-library=both \
+    --prefix=$PREFIX \
+    -Dlibdir=lib \
+    --wrap-mode=nofallback
+ninja -v -C builddir -j ${CPU_COUNT}
+ninja -C builddir install -j ${CPU_COUNT}
