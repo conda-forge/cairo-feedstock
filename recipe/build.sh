@@ -9,17 +9,8 @@ meson_config_args=(
     -Dfontconfig=enabled
     -Dfreetype=enabled
     -Dglib=enabled
+    -Dxlib-xcb=enabled
 )
-
-if test $(uname) == Darwin ; then
-    meson_config_args+=(
-        -Dxlib=disabled
-        -Dxlib-xcb=disabled
-        -Dxcb=disabled
-    )
-elif test $(uname) == Linux ; then
-    meson_config_args+=(-Dxlib-xcb=enabled)
-fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
     # See: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/134

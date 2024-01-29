@@ -12,7 +12,7 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -25,30 +25,30 @@ requirements:
     - meson
     - ninja
     - pkg-config
-    - pthread-stubs         # [linux]
-    - xcb-proto             # [linux]
-    - xorg-renderproto      # [linux]
-    - xorg-xproto           # [linux]
+    - pthread-stubs         # [not win]
+    - xcb-proto             # [not win]
+    - xorg-renderproto      # [not win]
+    - xorg-xproto           # [not win]
   host:
     - freetype
     - fontconfig
     - glib
     - icu
     - libpng
-    - libxcb                # [linux]
+    - libxcb                # [not win]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice  # [not win]
+    - xorg-libsm  # [not win]
+    - xorg-libx11  # [not win]
+    - xorg-libxext  # [not win]
+    - xorg-libxrender  # [not win]
     - zlib
   run:
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice  # [not win]
+    - xorg-libsm  # [not win]
+    - xorg-libx11  # [not win]
+    - xorg-libxext  # [not win]
+    - xorg-libxrender  # [not win]
     # hmaarrfk: 2022/08
     # While the dependencies below should be captured
     # by run_exports, run_exports doesn't necessary
@@ -83,7 +83,7 @@ test:
 
     # Check pkg-config files.
     - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc                  # [osx]
-    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc                    # [linux]
+    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc                    # [not win]
     - if not exist %LIBRARY_LIB%\pkgconfig\cairo-win32.pc exit /b 1  # [win]
 
     # check include files
