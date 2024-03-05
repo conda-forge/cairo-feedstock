@@ -2,6 +2,8 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+cairo:
+- '1'
 cdt_name:
 - cos6
 channel_sources:
