@@ -30,5 +30,3 @@ for %%f in ( "%SRC_DIR%\stage\lib\pkgconfig\*.pc" ) do (
     del %%f.bak
 )
 endlocal
-sed -i.bak "s,prefix=.*,prefix=/opt/anaconda1anaconda2anaconda3/Library,g" %SRC_DIR%\stage\bin\cairo-trace
-del %SRC_DIR%\stage\bin\cairo-trace.bak
