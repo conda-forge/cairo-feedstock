@@ -5,7 +5,7 @@ mkdir "%SRC_DIR%\stage"
 set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig;%BUILD_PREFIX%\Library\lib\pkgconfig"
 
 :: get the prefix in "mixed" form
-set "LIBRARY_PREFIX_M=%SRC_DIR\stage:\=/%"
+set "LIBRARY_PREFIX_M=%SRC_DIR%\stage"
 
 %BUILD_PREFIX%\Scripts\meson setup builddir ^
   --buildtype=release ^
