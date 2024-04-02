@@ -60,9 +60,9 @@ outputs:
         - pthread-stubs         # [linux]
       host:
         - zlib
-        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}        # [unix]
+        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}
       run:
-        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}        # [unix]
+        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}
         # hmaarrfk: 2022/08
         # While the dependencies below should be captured
         # by run_exports, run_exports doesn't necessary
@@ -89,7 +89,6 @@ outputs:
         - test ! -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
         - test   -f $PREFIX/lib/lib{{ each_cairo_lib }}.dylib               # [osx]
         - test   -f $PREFIX/lib/lib{{ each_cairo_lib }}.so                  # [linux]
-        - if     exist %LIBRARY_BIN%\{{ each_cairo_lib }}.dll exit /b 1   # [win]
         - if not exist %LIBRARY_LIB%\{{ each_cairo_lib }}.lib exit /b 1   # [win]
         - if     exist %LIBRARY_LIB%\lib{{ each_cairo_lib }}.a exit /b 1  # [win]
         {% endfor %}
