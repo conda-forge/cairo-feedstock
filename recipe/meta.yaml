@@ -200,8 +200,7 @@ about:
   summary: 'Cairo is a 2D graphics library with support for multiple output devices.'
 
 extra:
-  feedstock-name:
-    - cairo
+  feedstock-name: cairo
   recipe-maintainers:
     - ccordoba12
     - jakirkham
