@@ -1,7 +1,9 @@
 {% set version = "1.18.0" %}
+{% set so_name = "2.11800.0" %}
+{% set so_name_major = so_name.split('.')[0] %}
 
 package:
-  name: cairo
+  name: cairo-split
   version: {{ version }}
 
 source:
@@ -12,13 +14,12 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 0
-  run_exports:
-    - {{ pin_subpackage('cairo') }}
+  number: 1
 
 requirements:
   build:
     - m2w64-xz              # [win]
+    - m2-sed                # [win]
     - xz                    # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -43,61 +44,149 @@ requirements:
     - xorg-libxext  # [linux]
     - xorg-libxrender  # [linux]
     - zlib
-  run:
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
-    # hmaarrfk: 2022/08
-    # While the dependencies below should be captured
-    # by run_exports, run_exports doesn't necessary
-    # bring in compile time depenencies
-    - zlib
 
-test:
-  requires:
-    - glib  # needed for the pkg-config invocations below
-    - pkg-config
+outputs:
 
-  commands:
-    # Check commands.
-    - cairo-trace --help  # [not win]
+  # Everything needed to build against libcairo
+  - name: cairo
+    script: install.py
+    build:
+      run_exports:
+        - {{ pin_subpackage('libcairo' ~ so_name_major) }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - pthread-stubs         # [linux]
+      host:
+        - zlib
+        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}
+      run:
+        - {{ pin_subpackage('libcairo' ~ so_name_major, exact=True) }}
+        # hmaarrfk: 2022/08
+        # While the dependencies below should be captured
+        # by run_exports, run_exports doesn't necessary
+        # bring in compile time depenencies
+        - zlib
+    test:
+      requires:
+        - glib  # needed for the pkg-config invocations below
+        - pkg-config
 
-    # Verify libraries. Note that on Windows, we patch Cairo's build system to
-    # produce DLL names like `cairo.dll` rather than `cairo-2.dll` to maintain
-    # continuity with binaries shipped before the switch to Meson.
-    {% set cairo_libs = [
-            "cairo",
-            "cairo-gobject",
-            "cairo-script-interpreter",
-    ] %}
-    {% for each_cairo_lib in cairo_libs %}
-    - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
-    - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.dylib               # [osx]
-    - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.so                  # [linux]
-    - if not exist %LIBRARY_BIN%\{{ each_cairo_lib }}.dll exit /b 1   # [win]
-    - if not exist %LIBRARY_LIB%\{{ each_cairo_lib }}.lib exit /b 1   # [win]
-    - if not exist %LIBRARY_LIB%\lib{{ each_cairo_lib }}.a exit /b 1  # [win]
-    {% endfor %}
+      commands:
+        # Check commands.
+        - cairo-trace --help  # [not win]
 
-    # Check pkg-config files.
-    - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc                  # [osx]
-    - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc                    # [linux]
-    - if not exist %LIBRARY_LIB%\pkgconfig\cairo-win32.pc exit /b 1  # [win]
+        # Verify libraries. Note that on Windows, we patch Cairo's build system to
+        # produce DLL names like `cairo.dll` rather than `cairo-2.dll` to maintain
+        # continuity with binaries shipped before the switch to Meson.
+        {% set cairo_libs = [
+                "cairo",
+                "cairo-gobject",
+                "cairo-script-interpreter",
+        ] %}
+        {% for each_cairo_lib in cairo_libs %}
+        - test ! -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
+        - test   -f $PREFIX/lib/lib{{ each_cairo_lib }}.dylib               # [osx]
+        - test   -f $PREFIX/lib/lib{{ each_cairo_lib }}.so                  # [linux]
+        - if not exist %LIBRARY_LIB%\{{ each_cairo_lib }}.lib exit /b 1   # [win]
+        - if     exist %LIBRARY_LIB%\lib{{ each_cairo_lib }}.a exit /b 1  # [win]
+        {% endfor %}
 
-    # check include files
-    - test -f $PREFIX/include/cairo/cairo.h               # [unix]
-    - if not exist %LIBRARY_INC%\cairo\cairo.h exit /b 1  # [win]
+        # Check pkg-config files.
+        - test -f $PREFIX/lib/pkgconfig/cairo-quartz.pc                  # [osx]
+        - test -f $PREFIX/lib/pkgconfig/cairo-xlib.pc                    # [linux]
+        - if not exist %LIBRARY_LIB%\pkgconfig\cairo-win32.pc exit /b 1  # [win]
 
-    # check that cairo was built with fontconfig support
-    - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
+        # check include files
+        - test -f $PREFIX/include/cairo/cairo.h               # [unix]
+        - if not exist %LIBRARY_INC%\cairo\cairo.h exit /b 1  # [win]
 
-    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig   # [not win]
-    - set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig"  # [win]
-    - pkg-config --cflags cairo
-    - pkg-config --cflags cairo-fc
-    - pkg-config --cflags cairo-gobject
+        # check that cairo was built with fontconfig support
+        - grep -q "CAIRO_HAS_FC_FONT 1" $PREFIX/include/cairo/cairo-features.h  # [unix]
+
+        - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig   # [not win]
+        - set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig"  # [win]
+        - pkg-config --cflags cairo
+        - pkg-config --cflags cairo-fc
+        - pkg-config --cflags cairo-gobject
+
+  # Only what's needed for run_exports downstream
+  - name: libcairo{{ so_name_major }}
+    script: install.py
+    build:
+      run_exports:
+        - {{ pin_subpackage('libcairo' ~ so_name_major) }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - pthread-stubs         # [linux]
+        - xcb-proto             # [linux]
+        - xorg-renderproto      # [linux]
+        - xorg-xproto           # [linux]
+      host:
+        - freetype
+        - fontconfig
+        - glib
+        - icu
+        - libpng
+        - libxcb                # [linux]
+        - pixman
+        - xorg-libice  # [linux]
+        - xorg-libsm  # [linux]
+        - xorg-libx11  # [linux]
+        - xorg-libxext  # [linux]
+        - xorg-libxrender  # [linux]
+        - zlib
+      run:
+        - xorg-libice  # [linux]
+        - xorg-libsm  # [linux]
+        - xorg-libx11  # [linux]
+        - xorg-libxext  # [linux]
+        - xorg-libxrender  # [linux]
+        - {{ pin_subpackage('_libcairo_api', max_pin='x.x.x') }}              # [win]
+    test:
+      commands:
+        {% set cairo_libs = [
+                "cairo",
+                "cairo-gobject",
+                "cairo-script-interpreter",
+        ] %}
+        {% for each_cairo_lib in cairo_libs %}
+        - test -f ${PREFIX}/lib/lib{{ each_cairo_lib }}.{{ so_name_major }}{{ SHLIB_EXT }}   # [osx]
+        - test -f ${PREFIX}/lib/lib{{ each_cairo_lib }}{{ SHLIB_EXT }}.{{ so_name_major }}   # [linux]
+        - test -f ${PREFIX}/lib/lib{{ each_cairo_lib }}{{ SHLIB_EXT }}.{{ so_name }}         # [linux]
+        - if not exist %PREFIX%\\Library\\bin\\{{ each_cairo_lib }}.dll exit 1               # [win]
+        {% endfor %}
+
+  - name: libcairo-static
+    script: install.py
+    requirements:
+      run:
+        - {{ pin_subpackage('cairo', exact=True) }}
+        - {{ pin_subpackage('_libcairo_api', max_pin='x.x.x') }}              # [win]
+    test:
+      commands:
+        {% set cairo_libs = [
+                "cairo",
+                "cairo-gobject",
+                "cairo-script-interpreter",
+        ] %}
+        {% for each_cairo_lib in cairo_libs %}
+        - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
+        - if not exist %LIBRARY_LIB%\lib{{ each_cairo_lib }}.a exit /b 1  # [win]
+        {% endfor %}
+
+  # Clobber preventer for Windows; prevents multiple cairo.dll files from being
+  # installed simultaneously. This lets us avoid exporting a strict pin on the
+  # libcairo API which is not strictly correlated with the ABI.
+  - name: _libcairo_api
+    build:
+      skip: true  # [not win]
+    about:
+      summary: >
+        An empty package that prevents multiple ABIs of this package from
+        being installed simultaneously on Windows.
 
 about:
   home: http://cairographics.org/
@@ -111,6 +200,7 @@ about:
   summary: 'Cairo is a 2D graphics library with support for multiple output devices.'
 
 extra:
+  feedstock-name: cairo
   recipe-maintainers:
     - ccordoba12
     - jakirkham
