@@ -12,7 +12,7 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -21,6 +21,7 @@ requirements:
     - m2w64-xz              # [win]
     - xz                    # [not win]
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - meson
     - ninja
