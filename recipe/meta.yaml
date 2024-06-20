@@ -21,7 +21,7 @@ requirements:
     - m2w64-xz              # [win]
     - xz                    # [not win]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - meson
     - ninja
