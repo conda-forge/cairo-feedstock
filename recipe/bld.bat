@@ -24,4 +24,4 @@ if errorlevel 1 exit 1
 
 move %LIBRARY_LIB%\libcairo.a %LIBRARY_LIB%\cairo-static.lib
 move %LIBRARY_LIB%\libcairo-gobject.a %LIBRARY_LIB%\cairo-gobject-static.lib
-move %LIBRARY_LIB%\libcairo-script-intepreter.a %LIBRARY_LIB%\cairo-script-interpreter-static.lib
+move %LIBRARY_LIB%\libcairo-script-interpreter.a %LIBRARY_LIB%\cairo-script-interpreter-static.lib
