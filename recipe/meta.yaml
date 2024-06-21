@@ -12,7 +12,7 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -79,7 +79,7 @@ test:
     - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.so                  # [linux]
     - if not exist %LIBRARY_BIN%\{{ each_cairo_lib }}.dll exit /b 1   # [win]
     - if not exist %LIBRARY_LIB%\{{ each_cairo_lib }}.lib exit /b 1   # [win]
-    - if not exist %LIBRARY_LIB%\lib{{ each_cairo_lib }}.a exit /b 1  # [win]
+    - if not exist %LIBRARY_LIB%\{{ each_cairo_lib }}-static.lib exit /b 1  # [win]
     {% endfor %}
 
     # Check pkg-config files.
