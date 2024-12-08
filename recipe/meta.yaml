@@ -70,11 +70,7 @@ test:
     # Verify libraries. Note that on Windows, we patch Cairo's build system to
     # produce DLL names like `cairo.dll` rather than `cairo-2.dll` to maintain
     # continuity with binaries shipped before the switch to Meson.
-    {% set cairo_libs = [
-            "cairo",
-            "cairo-gobject",
-            "cairo-script-interpreter",
-    ] %}
+    {% set cairo_libs = ["cairo", "cairo-gobject", "cairo-script-interpreter"] %}
     {% for each_cairo_lib in cairo_libs %}
     - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
     - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.dylib               # [osx]
