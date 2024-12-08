@@ -1,4 +1,4 @@
-{% set version = "1.18.0" %}
+{% set version = "1.18.2" %}
 
 package:
   name: cairo
@@ -6,13 +6,13 @@ package:
 
 source:
   url: http://cairographics.org/releases/cairo-{{ version }}.tar.xz
-  sha256: 243a0736b978a33dee29f9cca7521733b78a65b5418206fef7bd1c3d4cf10b64
+  sha256: a62b9bb42425e844cc3d6ddde043ff39dbabedd1542eba57a2eb79f85889d45a
   patches:
     - meson-darwin-versions.patch
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 3
+  number: 0
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -31,6 +31,7 @@ requirements:
     - xorg-renderproto      # [linux]
     - xorg-xproto           # [linux]
   host:
+    - expat
     - freetype
     - fontconfig
     - glib
@@ -58,7 +59,8 @@ requirements:
 
 test:
   requires:
-    - glib  # needed for the pkg-config invocations below
+    - expat  # needed for the pkg-config invocations below
+    - glib  # ditto
     - pkg-config
 
   commands:
@@ -68,11 +70,7 @@ test:
     # Verify libraries. Note that on Windows, we patch Cairo's build system to
     # produce DLL names like `cairo.dll` rather than `cairo-2.dll` to maintain
     # continuity with binaries shipped before the switch to Meson.
-    {% set cairo_libs = [
-            "cairo",
-            "cairo-gobject",
-            "cairo-script-interpreter",
-    ] %}
+    {% set cairo_libs = ["cairo", "cairo-gobject", "cairo-script-interpreter"] %}
     {% for each_cairo_lib in cairo_libs %}
     - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.a                   # [not win]
     - test -f $PREFIX/lib/lib{{ each_cairo_lib }}.dylib               # [osx]
