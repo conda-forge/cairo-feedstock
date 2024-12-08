@@ -2,12 +2,16 @@ c_compiler:
 - vs2019
 c_stdlib:
 - vs
+cairo:
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2019
+expat:
+- '2'
 fontconfig:
 - '2'
 freetype:
