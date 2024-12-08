@@ -31,6 +31,7 @@ requirements:
     - xorg-renderproto      # [linux]
     - xorg-xproto           # [linux]
   host:
+    - expat
     - freetype
     - fontconfig
     - glib
@@ -58,7 +59,8 @@ requirements:
 
 test:
   requires:
-    - glib  # needed for the pkg-config invocations below
+    - expat  # needed for the pkg-config invocations below
+    - glib  # ditto
     - pkg-config
 
   commands:
