@@ -28,8 +28,7 @@ requirements:
     - pkg-config
     - pthread-stubs         # [linux]
     - xcb-proto             # [linux]
-    - xorg-renderproto      # [linux]
-    - xorg-xproto           # [linux]
+    - xorg-xorgproto        # [linux]
   host:
     - expat
     - freetype
@@ -39,11 +38,12 @@ requirements:
     - libpng
     - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxext          # [linux]
+    - xorg-libxrender       # [linux]
+    - xorg-xorgproto        # [linux]
     - zlib
   run:
     - xorg-libice  # [linux]
