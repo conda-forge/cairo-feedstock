@@ -49,7 +49,8 @@ requirements:
 test:
   requires:
     - expat  # needed for the pkg-config invocations below
-    - glib  # ditto
+    - glib   # ditto
+    - zlib   # ditto
     - pkg-config
 
   commands:
