@@ -45,17 +45,6 @@ requirements:
     - xorg-libxrender       # [linux]
     - xorg-xorgproto        # [linux]
     - zlib
-  run:
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
-    # hmaarrfk: 2022/08
-    # While the dependencies below should be captured
-    # by run_exports, run_exports doesn't necessary
-    # bring in compile time depenencies
-    - zlib
 
 test:
   requires:
