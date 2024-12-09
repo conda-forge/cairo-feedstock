@@ -26,9 +26,9 @@ requirements:
     - meson
     - ninja
     - pkg-config
-    - pthread-stubs         # [linux]
-    - xcb-proto             # [linux]
-    - xorg-xorgproto        # [linux]
+    # - pthread-stubs         # [linux]
+    # - xcb-proto             # [linux]
+    # - xorg-xorgproto        # [linux]
   host:
     - expat
     - freetype
