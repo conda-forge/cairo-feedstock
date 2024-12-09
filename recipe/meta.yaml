@@ -48,10 +48,13 @@ requirements:
 
 test:
   requires:
-    - expat  # needed for the pkg-config invocations below
-    - glib   # ditto
-    - zlib   # ditto
     - pkg-config
+    # The packages are below are
+    # needed for the pkg-config invocations below
+    - expat
+    - glib
+    - zlib
+    - xorg-xorgproto        # [linux]
 
   commands:
     # Check commands.
