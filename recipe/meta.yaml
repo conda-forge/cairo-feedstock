@@ -12,7 +12,7 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -26,10 +26,6 @@ requirements:
     - meson
     - ninja
     - pkg-config
-    - pthread-stubs         # [linux]
-    - xcb-proto             # [linux]
-    - xorg-renderproto      # [linux]
-    - xorg-xproto           # [linux]
   host:
     - expat
     - freetype
@@ -39,29 +35,23 @@ requirements:
     - libpng
     - libxcb                # [linux]
     - pixman
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
-    - zlib
-  run:
-    - xorg-libice  # [linux]
-    - xorg-libsm  # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libxext  # [linux]
-    - xorg-libxrender  # [linux]
-    # hmaarrfk: 2022/08
-    # While the dependencies below should be captured
-    # by run_exports, run_exports doesn't necessary
-    # bring in compile time depenencies
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxext          # [linux]
+    - xorg-libxrender       # [linux]
+    - xorg-xorgproto        # [linux]
     - zlib
 
 test:
   requires:
-    - expat  # needed for the pkg-config invocations below
-    - glib  # ditto
     - pkg-config
+    # The packages are below are
+    # needed for the pkg-config invocations below
+    - expat
+    - glib
+    - zlib
+    - xorg-xorgproto        # [linux]
 
   commands:
     # Check commands.
