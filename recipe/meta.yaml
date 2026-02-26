@@ -48,6 +48,7 @@ test:
     # The packages are below are
     # needed for the pkg-config invocations below
     - expat
+    - freetype
     - glib
     - zlib
     - xorg-xorgproto        # [linux]
