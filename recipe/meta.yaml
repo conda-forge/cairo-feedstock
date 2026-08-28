@@ -12,7 +12,7 @@ source:
     - windows-soversion-continuity.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage('cairo') }}
 
@@ -48,6 +48,7 @@ test:
     # The packages are below are
     # needed for the pkg-config invocations below
     - expat
+    - freetype
     - glib
     - zlib
     - xorg-xorgproto        # [linux]
