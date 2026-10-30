@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index 9100152..612a465 100644
+index 19f1633..31d3d52 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -21,15 +21,19 @@ cairo_version_micro = version_arr[2].to_int()
+@@ -24,15 +24,19 @@ cairo_version_micro = version_arr[2].to_int()
  
  # The libtool shared library version stuff.
  # Try and maintain compatibility with the previous library versioning.
@@ -24,4 +24,4 @@ index 9100152..612a465 100644
 +  cairo_libversion = '@0@.@1@.@2@'.format(cairo_version_sonum_real, cairo_version, cairo_version_micro)
  endif
  
- conf = configuration_data()
+ # Use a stable compatibility version for Darwin dylibs so cairo is suitable for distribution as a
