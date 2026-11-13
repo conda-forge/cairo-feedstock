@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cairo-feedstock
 
 Home: http://cairographics.org/
 
-Package license: LGPL-2.1-only or MPL-1.1
+Package license: LGPL-2.1-only OR MPL-1.1
 
 Summary: Cairo is a 2D graphics library with support for multiple output devices.
 
